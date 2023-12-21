@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Js</title>
+
+    <style></style>
+  </head>
+
+  <body>
+    <div class="container py-5 my-5">
+      <form action="">
+        <label for="productName">productName</label>
+        <input type="text" id="productName" class="form-control my-2" />
+
+        <label for="productPrice">productPrice</label>
+        <input type="text" id="productPrice" class="form-control my-2" />
+
+        <label for="productDesc">productDesc</label>
+        <input type="text" id="productDesc" class="form-control my-2" />
+
+        <label for="productCat">productCat</label>
+        <input type="text" id="productCat" class="form-control my-2" />
+
+        <button class="btn btn-info text-white mb-3" id="btn" type="button">
+          add Product
+        </button>
+        <!--  <button
+          class="btn btn-warning text-white"
+          id="btn_update"
+          type="button"
+        >
+          Update
+        </button> -->
+      </form>
+
+      <table class="my-4 table">
+        <div class="search my-3 w-75 m-auto">
+          <input
+            type="text"
+            id="productSearch"
+            placeholder="search ... "
+            class="form-control my-2"
+            oninput="searchProducts(this.value)"
+          />
+        </div>
+        <thead>
+          <tr>
+            <th>Inedx</th>
+            <th>productName</th>
+            <th>productPrice</th>
+            <th>productCat</th>
+            <th>productDesc</th>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody id="tableRow"></tbody>
+      </table>
+    </div>
+
+    <script src="./js/style.js"></script>
+  </body>
+</html>
