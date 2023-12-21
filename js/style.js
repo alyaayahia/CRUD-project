@@ -4,14 +4,13 @@ var productDesc = document.getElementById("productDesc");
 var productCat = document.getElementById("productCat");
 var btn = document.getElementById("btn");
 var tableRow = document.getElementById("tableRow");
-var btn_update = document.getElementById("btn_update");
 var productList = [];
 if (localStorage.getItem("storageProduct")) {
   productList = JSON.parse(localStorage.getItem("storageProduct"));
   display(productList);
 }
 btn.onclick = function () {
-  if (btn.innerHTML == " add Product") {
+  if (btn.innerHTML == "add Product") {
     addProduct();
   } else if (btn.innerHTML == "Update") {
     upDateProducts();
@@ -28,6 +27,7 @@ function addProduct() {
   };
   productList.push(product);
   localStorage.setItem("storageProduct", JSON.stringify(productList));
+  /*  console.log("hi"); */
 }
 function display(arr) {
   var box = "";
@@ -78,6 +78,7 @@ function searchProducts(term) {
 }
 var currentIndex;
 function upData(index) {
+  /* currentIndex = index; */
   productName.value = productList[index].productName;
   productPrice.value = productList[index].productPrice;
   productDesc.value = productList[index].productDesc;
@@ -85,10 +86,13 @@ function upData(index) {
   btn.innerHTML = "Update";
   currentIndex = index;
 }
+
 function upDateProducts() {
   productList[currentIndex].productName = productName.value;
   productList[currentIndex].productPrice = productPrice.value;
   productList[currentIndex].productDesc = productDesc.value;
   productList[currentIndex].productCat = productCat.value;
-  btn.innerHTML = "add Product";
+  btn.innerHTML = " add Product";
+  localStorage.setItem("storageProduct", JSON.stringify(productList));
+  display(productList);
 }
