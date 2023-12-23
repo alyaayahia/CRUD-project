@@ -3,6 +3,7 @@ var productPrice = document.getElementById("productPrice");
 var productDesc = document.getElementById("productDesc");
 var productCat = document.getElementById("productCat");
 var btn = document.getElementById("btn");
+var update = document.getElementById("update");
 var tableRow = document.getElementById("tableRow");
 var productList = [];
 if (localStorage.getItem("storageProduct")) {
@@ -10,11 +11,7 @@ if (localStorage.getItem("storageProduct")) {
   display(productList);
 }
 btn.onclick = function () {
-  if (btn.innerHTML == "add Product") {
-    addProduct();
-  } else if (btn.innerHTML == "Update") {
-    upDateProducts();
-  }
+  addProduct();
   display(productList);
   clear();
 };
@@ -27,7 +24,6 @@ function addProduct() {
   };
   productList.push(product);
   localStorage.setItem("storageProduct", JSON.stringify(productList));
-  /*  console.log("hi"); */
 }
 function display(arr) {
   var box = "";
@@ -78,21 +74,22 @@ function searchProducts(term) {
 }
 var currentIndex;
 function upData(index) {
-  /* currentIndex = index; */
   productName.value = productList[index].productName;
   productPrice.value = productList[index].productPrice;
   productDesc.value = productList[index].productDesc;
   productCat.value = productList[index].productCat;
-  btn.innerHTML = "Update";
+  btn.classList.replace("d-block", "d-none");
+  update.classList.replace("d-none", "d-block");
   currentIndex = index;
 }
-
-function upDateProducts() {
+update.onclick = function () {
   productList[currentIndex].productName = productName.value;
   productList[currentIndex].productPrice = productPrice.value;
   productList[currentIndex].productDesc = productDesc.value;
   productList[currentIndex].productCat = productCat.value;
-  btn.innerHTML = " add Product";
+  update.classList.replace("d-block", "d-none");
+  btn.classList.replace("d-none", "d-block");
   localStorage.setItem("storageProduct", JSON.stringify(productList));
   display(productList);
-}
+  console.log(currentIndex);
+};
